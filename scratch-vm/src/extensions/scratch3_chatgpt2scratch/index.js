@@ -29,7 +29,7 @@ const blockIconURI =
  */
 
 /**
- * @type{{ en: I18nData, ja: I18nData, ja-Hira: I18nData }}
+ * @type{{ en: I18nData, ru: I18nData, ja: I18nData, ja-Hira: I18nData }}
  */
 const I18n = {
   en: {
@@ -47,6 +47,22 @@ const I18n = {
     setApiKeyFuncPromptText: "Enter the API key.",
     setSystemPromptBlockText: "Set the system prompt [TEXT]",
     answerFuncFailedToGetAnswer: "Failed to get answer",
+  },
+  ru: {
+    answerBlockText: "[TEXT] Ответ",
+    answerBlockDefaultValue: "Как стать лучше в Scratch?",
+    answerFuncEnterOpenAIApiKey:
+      "Введите API‑ключ, полученный на сайте openai.com",
+    clearMessageLogsBlockText: "Очистить журнал сообщений",
+    setMaxTokensBlockText: "Установить максимум токенов [NUMBER]",
+    setTemperatureBlockText: "Установить temperature (0–2) [NUMBER]",
+    setTimeoutBlockText: "Установить тайм‑аут [NUMBER]",
+    setApiKeyBlockText: "Установить API‑ключ",
+    setApiKeyBlockDefaultValue: "API‑ключ",
+    setApiKeyFuncAzurePromptText: "API‑ключ не требуется",
+    setApiKeyFuncPromptText: "Введите API‑ключ.",
+    setSystemPromptBlockText: "Установить системный промпт [TEXT]",
+    answerFuncFailedToGetAnswer: "Не удалось получить ответ",
   },
   ja: {
     answerBlockText: "[TEXT]の答え",
@@ -126,7 +142,7 @@ class Scratch3ChatGPTBlocks {
       "You are a helpful assistant in the Scratch programming language.";
     this._initMessageLog();
     const currentLocale = formatMessage.setup().locale;
-    const availableLocales = ["en", "ja", "ja-Hira"];
+    const availableLocales = ["en", "ru", "ja", "ja-Hira"];
     /**
      * @type {I18nData}
      */
