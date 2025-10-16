@@ -239,14 +239,15 @@ class Scratch3ChatGPTBlocks {
       method: "POST",
       headers: this.requestHeader,
       body: JSON.stringify({
-        model: "gpt-4o-mini",
+        // model: "gpt-4o-mini",
+        model: "gemini-2.5-flash-lite",
         messages: [
           this._getSystemPromptMessage(),
           ...this.messageLogs,
           questionMessageLog,
         ].filter((v) => v !== null),
         max_tokens: this.maxTokens,
-        temperature: this.temperature,
+        // temperature: this.temperature,
       }),
     };
     const completionPromise = fetchWithTimeout(
@@ -262,7 +263,10 @@ class Scratch3ChatGPTBlocks {
         this._lastAnswer = json.choices[0].message.content;
         this._lastQuestion = question;
         this.messageLogs.push(questionMessageLog);
-        this.messageLogs.push({ role: "assistant", content: this._lastAnswer });
+        this.messageLogs.push({
+          role: "assistant",
+          content: this._lastAnswer,
+        });
         return this._lastAnswer;
       })
       .catch((error) => {
@@ -304,7 +308,9 @@ class Scratch3ChatGPTBlocks {
       url =
         "https://chatgpt2scratch.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview";
     } else {
-      url = "https://api.openai.com/v1/chat/completions";
+      // url = 'https://api.openai.com/v1/chat/completions'
+      url =
+        "https://aid4ieyeh3aizoh0eesh.vercel.app/v1beta/openai/chat/completions";
     }
     return url;
   }
