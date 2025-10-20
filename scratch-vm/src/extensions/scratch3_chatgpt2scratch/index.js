@@ -263,7 +263,7 @@ class Scratch3ChatGPTBlocks {
           questionMessageLog,
         ].filter((v) => v !== null),
         max_tokens: this.maxTokens,
-        // temperature: this.temperature,
+        temperature: this.temperature,
       }),
     };
     const completionPromise = fetchWithTimeout(
